@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import  Axios  from "axios";
 
@@ -24,6 +24,13 @@ const Register = () => {
             setTimeout(() => navigate('/#home'), 3000)
         }).catch(error => console.log(error))
     }
+
+    // Starting up db on website load
+    useEffect(() => {
+        Axios.get('your route')
+            .then(res => console.log('CONNECTED TO DATABASE'))
+                .catch(err => console.log(err))
+    },[])
 
     return ( 
         <section className='register'>

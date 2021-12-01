@@ -4,7 +4,7 @@ import Services from "./services/Services";
 import Gallery from "./gallery/Gallery";
 import Contact from "./Contact";
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 const Home = () => {
@@ -23,11 +23,15 @@ const Home = () => {
         setBState(({
             ...colorDict,
             [bName]: true
-        }))
-
-        
-        
+        }))    
     }
+
+    // Starting up db on website load
+    useEffect(() => {
+        Axios.get('your route')
+            .then(res => console.log('CONNECTED TO DATABASE'))
+                .catch(err => console.log(err))
+    },[])
     
 
     return ( 
